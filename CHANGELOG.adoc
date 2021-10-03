@@ -1,0 +1,10 @@
+= Supernaut.FX Webcam
+:homepage: https://github.com/SupernautApp/supernaut-fx-webcam
+
+A high-level view of the changes in each release.
+
+== v0.1.8-SNAPSHOT
+
+Released: Not yet
+
+* Upgrade to Gradle 6.3

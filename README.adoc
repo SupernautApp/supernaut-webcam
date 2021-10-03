@@ -1,0 +1,12 @@
+= Supernaut.FX Webcam 
+Sean Gilligan <https://github.com/msgilligan>
+v0.2.0
+:description: ConsensusJ Wallet Framework README.
+:webcam-version: 0.2.0
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+
+Libraries for Webcam and Webcam-based QR code capture for JavaFX.

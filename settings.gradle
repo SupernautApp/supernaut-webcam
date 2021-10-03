@@ -1,0 +1,9 @@
+plugins {
+    id "com.gradle.enterprise" version "3.0"
+}
+
+include 'camera'
+include 'cameraqr'
+include 'app-qrdisplay'
+include 'app-qrscan'
+include 'app-webcam'

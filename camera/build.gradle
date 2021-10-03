@@ -1,0 +1,24 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+dependencies {
+    api ("com.github.sarxos:webcam-capture:0.3.12") {
+        exclude group: 'com.nativelibs4java', module: 'bridj'
+    }
+    implementation "com.github.consensusj:BridJ:consensusj-master-SNAPSHOT"
+
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+
+    testImplementation group: 'junit', name: 'junit', version: '4.13'
+}
+
+javafx {
+    version = javaFxVersion
+    modules = [ 'javafx.controls', 'javafx.swing' ]
+}
