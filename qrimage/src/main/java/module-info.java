@@ -2,7 +2,7 @@
  *
  */
 module app.supernaut.fx.qr {
-    requires javafx.controls;
+    requires javafx.graphics;
 
     requires com.google.zxing;
 
