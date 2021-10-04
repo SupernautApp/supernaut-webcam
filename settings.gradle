@@ -4,6 +4,7 @@ plugins {
 
 include 'camera'
 include 'cameraqr'
+include 'qrimage'
 include 'app-qrdisplay'
 include 'app-qrscan'
 include 'app-webcam'

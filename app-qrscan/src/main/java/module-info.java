@@ -1,14 +1,10 @@
 /**
  *
  */
-module app.supernaut.fx.webcam.app.qrdisplay {
-    requires java.desktop;
-
+module app.supernaut.fx.webcam.app.qrscan {
     requires javafx.controls;
-    requires javafx.swing;
 
     requires com.google.zxing;
-    requires com.google.zxing.javase;
 
     requires webcam.capture;
     requires org.slf4j;

@@ -1,7 +1,6 @@
 package app.supernaut.fx.webcam.app.qrdisplay;
 
-import app.supernaut.fx.webcam.camera.CameraService;
-import app.supernaut.fx.webcam.cameraqr.QRCodeImages;
+import app.supernaut.fx.qr.QRCodeImages;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -15,8 +14,6 @@ import org.slf4j.LoggerFactory;
  */
 public class DemoQRDisplayApplication extends Application {
     private static final Logger log = LoggerFactory.getLogger(DemoQRDisplayApplication.class);
-
-    private CameraService cameraService;
 
     @Override
     public void init() {

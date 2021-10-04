@@ -2,8 +2,6 @@
  *
  */
 module app.supernaut.fx.webcam.app.webcam {
-    requires java.desktop;
-
     requires javafx.controls;
     requires javafx.swing;
 

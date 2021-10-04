@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package app.supernaut.fx.webcam.cameraqr;
+package app.supernaut.fx.qr;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Writer;
