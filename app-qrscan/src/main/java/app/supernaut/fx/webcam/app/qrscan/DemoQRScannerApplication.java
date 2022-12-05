@@ -15,8 +15,6 @@
  */
 package app.supernaut.fx.webcam.app.qrscan;
 
-import app.supernaut.fx.webcam.cameraqr.CameraQRService;
-import app.supernaut.fx.webcam.cameraqr.QrCaptureView;
 import com.github.sarxos.webcam.Webcam;
 import javafx.application.Application;
 import javafx.scene.Scene;

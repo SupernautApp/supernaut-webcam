@@ -1,4 +1,4 @@
-= Supernaut.FX Webcam 
+= Supernaut Webcam and QR Libraries
 Sean Gilligan <https://github.com/msgilligan>
 v0.2.0
 :description: ConsensusJ Wallet Framework README.
@@ -9,4 +9,29 @@ v0.2.0
 :caution-caption: :fire:
 :warning-caption: :warning:
 
-Libraries for Webcam and Webcam-based QR code capture for JavaFX.
+Libraries for Webcam and Webcam-based QR code capture for JavaFX. They **do not require** use of the Supernaut.FX dependency-injection micro-framework.
+
+Note:: This is a work-in-process.
+
+Note:: It's currently not easy for me to develop with `sarxos-webcam` because the drivers don't work on macOS Ventura on Apple Silicon.
+
+== Libraries
+
+camera-api:: A `java.util.concurrent.Flow`-based API for reactive-streaming camera images.
+camera-fx:: JavaFX adapters for `camera-api`.
+camera-sarxos:: Work-in-progress sarxos-webcam drivers
+cameraqr:: QR-code scanning from a webcam using `camera-api` and JavaFX.
+qrimage:: Library for generating and displaying QR Code images on JavaFX.
+
+== Sample/Test Applications
+
+app-qrdisplay:: Simple JavaFX app that lets you type QR code strings and display them
+app-qrscan:: JavaFX app that uses sarxos-webcam to capture QR codes (not tested)
+app-test-qrscan:: JavaFX app that captures QR codes from a simulated video stream. (Works on **macOS**!)
+app-testcam:: JavaFX app that displays video from a generated video stream.  Works on **macOS**!)
+app-webcam:: JavaFX app that displays video from a sarxos-webcam (not tested)
+
+
+
+
+

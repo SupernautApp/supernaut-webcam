@@ -2,9 +2,13 @@ plugins {
     id "com.gradle.enterprise" version "3.0"
 }
 
-include 'camera'
+include 'camera-api'
+include 'camera-fx'
+include 'camera-sarxos'
 include 'cameraqr'
 include 'qrimage'
 include 'app-qrdisplay'
 include 'app-qrscan'
+include 'app-testcam'
+include 'app-test-qrscan'
 include 'app-webcam'

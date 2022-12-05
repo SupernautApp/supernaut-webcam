@@ -16,7 +16,7 @@
 /**
  *
  */
-module app.supernaut.fx.webcam.app.qrdisplay {
+module app.supernaut.fx.qr.app.qrdisplay {
     requires javafx.controls;
 
     requires com.google.zxing;
@@ -25,5 +25,5 @@ module app.supernaut.fx.webcam.app.qrdisplay {
 
     requires app.supernaut.fx.qr;
 
-    exports app.supernaut.fx.webcam.app.qrdisplay;
+    exports app.supernaut.fx.qr.app.qrdisplay;
 }

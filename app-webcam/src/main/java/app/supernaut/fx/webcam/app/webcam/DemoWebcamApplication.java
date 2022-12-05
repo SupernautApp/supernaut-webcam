@@ -15,11 +15,13 @@
  */
 package app.supernaut.fx.webcam.app.webcam;
 
-import app.supernaut.fx.webcam.camera.CameraService;
-import app.supernaut.fx.webcam.camera.CameraView;
+import app.supernaut.camera.sarxos.CameraService;
+import app.supernaut.camera.sarxos.CameraView;
 import com.github.sarxos.webcam.Webcam;
+//import com.github.sarxos.webcam.ds.openimaj.OpenImajDriver;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,17 +38,25 @@ public class DemoWebcamApplication extends Application {
     private CameraService cameraQRService;
     private Stage primaryStage;
 
+//    static {
+//        Webcam.setDriver(new OpenImajDriver());
+//    }
+
     @Override
     public void init() {
         // note this is in init as it **must not** be called on the FX Application Thread:
 //        Webcam camera = Webcam.getWebcams().get(0);
+
         Webcam camera = null;
         try {
             camera = Webcam.getWebcams(GET_WEBCAMS_TIMEOUT).get(0);
         } catch (TimeoutException toex) {
             log.warn("No Webcam found within {} ms", GET_WEBCAMS_TIMEOUT);
+        } catch (Exception e) {
+            log.error("Exception getting Webcam", e);
         }
 
+//        camera = findWebcam();
         cameraQRService = new CameraService(camera);
     }
 
@@ -54,8 +64,10 @@ public class DemoWebcamApplication extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         CameraView captureView  = new CameraView(cameraQRService);
+        BorderPane pane = new BorderPane();
+        pane.setCenter(captureView);
 
-        Scene scene = new Scene(captureView);
+        Scene scene = new Scene(pane);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -68,6 +80,23 @@ public class DemoWebcamApplication extends Application {
         if (primaryStage != null) {
             primaryStage.hide();
         }
+    }
+
+    private Webcam findWebcam() {
+//        Webcam selectedWebcam = null;
+//        for ( Webcam webcam : Webcam.getWebcams() ) {
+//
+//            if (webcam.getName().contains("FaceTime")) {
+//
+//                selectedWebcam = webcam;
+//            }
+//
+//            log.info( "webcam: {}", webcam);
+//        }
+        //Webcam.setDriver(new OpenImajDriver());
+        Webcam selectedWebcam = Webcam.getDefault();
+        log.info("Returning selected webcam: {}", selectedWebcam);
+        return selectedWebcam;
     }
 
     public static void main(String[] args) {

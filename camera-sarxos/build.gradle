@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+dependencies {
+    api project(":camera-fx")
+
+    api ("com.github.sarxos:webcam-capture:0.3.13-SNAPSHOT") {
+        exclude group: 'com.nativelibs4java', module: 'bridj'
+    }
+    //implementation "com.github.consensusj:BridJ:consensusj-master-SNAPSHOT"
+    api "com.nativelibs4java:bridj:0.7-20140918-3"
+
+    api ("com.github.sarxos:webcam-capture-driver-openimaj:0.3.13-SNAPSHOT") {
+        exclude group: 'org.openimaj', module: 'core-video-capture'
+    }
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+}
+
+javafx {
+    version = javaFxVersion
+    modules = [ 'javafx.controls', 'javafx.swing' ]
+}

@@ -25,30 +25,30 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 /**
- * Utility for creating Images from QR Codes (copied from bitcoinj-wallettemplate)
+ * Utility for creating QR code {@link javafx.scene.image.Image}s.
  */
 public class QRCodeImages {
     /**
-     * Create an Image from a Bitcoin URI
-     * @param uri Bitcoin URI
+     * Create a QT Image from a string (including URI strings)
+     * @param string string to QR encode
      * @param width width of image
      * @param height height of image
-     * @return a javafx Image
+     * @return a JavaFX Image
      */
-    public static Image imageFromString(String uri, int width, int height) {
-        return imageFromMatrix(matrixFromString(uri, width, height));
+    public static Image imageFromString(String string, int width, int height) {
+        return imageFromMatrix(matrixFromString(string, width, height));
     }
 
     /**
-     * Create a BitMatrix from a Bitcoin URI
-     * @param uri Bitcoin URI
-     * @return A BitMatrix for the QRCode for the URI
+     * Create a BitMatrix from a string (including URI strings)
+     * @param string string to QR encode
+     * @return A BitMatrix for the QRCode for the string
      */
-    private static BitMatrix matrixFromString(String uri, int width, int height) {
+    public static BitMatrix matrixFromString(String string, int width, int height) {
         Writer qrWriter = new QRCodeWriter();
         BitMatrix matrix;
         try {
-            matrix = qrWriter.encode(uri, BarcodeFormat.QR_CODE, width, height);
+            matrix = qrWriter.encode(string, BarcodeFormat.QR_CODE, width, height);
         } catch (WriterException e) {
             throw new RuntimeException(e);
         }
@@ -70,6 +70,12 @@ public class QRCodeImages {
                 image.getPixelWriter().setColor(x, y, color);
             }
         }
+        return image;
+    }
+
+    static Image emptyImage() {
+        WritableImage image = new WritableImage(1, 1);
+        image.getPixelWriter().setColor(0, 0, Color.WHITE);
         return image;
     }
 }

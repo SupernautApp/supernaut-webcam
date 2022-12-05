@@ -20,9 +20,12 @@ module app.supernaut.fx.webcam.app.webcam {
     requires javafx.controls;
 
     requires webcam.capture;
+    requires webcam.capture.driver.openimaj;
+
     requires org.slf4j;
 
     requires app.supernaut.fx.webcam.camera;
+    requires app.supernaut.camera.sarxos;
 
     exports app.supernaut.fx.webcam.app.webcam;
 }

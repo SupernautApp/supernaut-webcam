@@ -1,18 +1,36 @@
 plugins {
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
+
+apply plugin: 'org.beryx.jlink'
 
 sourceCompatibility = 11
 targetCompatibility = 11
 
+def appName = 'SupernautFXWebcam'
+
 dependencies {
-    implementation project(":camera")
+    implementation project(":camera-sarxos")
+
+//    implementation (project(":camera-sarxos"), {
+//        exclude group: 'com.github.sarxos', module: 'webcam-capture'
+//        exclude group: 'com.nativelibs4java', module: 'bridj'
+//    })
+//    implementation ("com.github.sarxos:webcam-capture:0.3.13-SNAPSHOT") {
+//        exclude group: 'com.nativelibs4java', module: 'bridj'
+//        //exclude group: 'org.openimaj', module: 'core-video-capture'
+//    }
+//    //implementation "com.github.consensusj:BridJ:consensusj-master-SNAPSHOT"
+//    implementation "com.nativelibs4java:bridj:0.7-20140918-3"
+//
+//    implementation ("com.github.sarxos:webcam-capture-driver-openimaj:0.3.13-SNAPSHOT") {
+//        exclude group: 'com.nativelibs4java', module: 'bridj'
+//        //exclude group: 'org.openimaj', module: 'core-video-capture'
+//    }
 
     implementation "org.slf4j:slf4j-api:${slf4jVersion}"
     runtimeOnly "org.slf4j:slf4j-jdk14:${slf4jVersion}"
-
-    testImplementation group: 'junit', name: 'junit', version: '4.13'
 }
 
 javafx {
@@ -21,5 +39,40 @@ javafx {
 }
 
 application {
+    mainModule = 'app.supernaut.fx.webcam.app.webcam'
     mainClassName = 'app.supernaut.fx.webcam.app.webcam.DemoWebcamApplication'
 }
+
+def os = org.gradle.internal.os.OperatingSystem.current()
+
+jlink {
+    addExtraDependencies("javafx")
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--add-modules', 'java.logging,org.slf4j.jul']
+    launcher {
+        name = appName
+        jvmArgs = []
+    }
+    mergedModule {
+        requires 'java.logging'
+        requires 'java.desktop'
+        requires 'org.slf4j'
+    }
+    jpackage {
+        // See https://badass-jlink-plugin.beryx.org/releases/latest/#_jpackage for
+        // where the plugin's jpackage task finds the path to the jpackage tool by default
+        skipInstaller = true
+
+        // Massage version string to be compatible with jpackage installers
+        // for the current OS platform
+        def appVersionForJpackage = 1.0
+
+        imageOptions = ["--verbose", "--app-version", appVersionForJpackage]
+        installerOptions = ["--app-version", appVersionForJpackage]
+        if (os.macOsX) {
+            imageOptions += [ '--resource-dir', "${projectDir}/src/macos/resource-dir" ]
+        } else if (os.windows) {
+            installerOptions += ['--win-dir-chooser', '--win-menu', '--win-shortcut']
+        }
+    }
+}
+

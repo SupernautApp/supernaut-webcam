@@ -20,12 +20,14 @@ module app.supernaut.fx.webcam.app.qrscan {
     requires javafx.controls;
 
     requires com.google.zxing;
+    requires com.google.zxing.javase;
 
     requires webcam.capture;
     requires org.slf4j;
 
     requires app.supernaut.fx.webcam.camera;
     requires app.supernaut.fx.webcam.cameraqr;
+    requires app.supernaut.camera.sarxos;
 
     exports app.supernaut.fx.webcam.app.qrscan;
 }

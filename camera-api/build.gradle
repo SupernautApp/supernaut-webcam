@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+}

@@ -1,6 +1,7 @@
 plugins {
     id 'org.asciidoctor.jvm.convert'        version '3.3.2'
     id 'com.github.hierynomus.license'      version '0.16.1' apply false
+    id 'org.beryx.jlink'                    version '2.25.0' apply false
 }
 
 buildScan {
@@ -20,7 +21,9 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven { url 'https://gitlab.com/api/v4/projects/26584840/packages/maven' }  // SupernautFX
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots'}       // webcam-capture snapshots
+        maven { url 'https://maven.ecs.soton.ac.uk/content/repositories/thirdparty/' }
+        //maven { url 'https://gitlab.com/api/v4/projects/26584840/packages/maven' }  // SupernautFX
         maven { url 'https://jitpack.io' }                                          // Modified BridJ
     }
 }
@@ -38,13 +41,12 @@ subprojects {
     dependencies {
         implementation "org.slf4j:slf4j-api:${slf4jVersion}"
 
-        testImplementation "org.codehaus.groovy:groovy:${groovyVersion}:"
         testImplementation("org.spockframework:spock-core:${spockVersion}") {
             exclude module: "groovy-all"
         }
 
-        testRuntimeOnly "net.bytebuddy:byte-buddy:1.8.21"                 // allows Spock to mock classes (in addition to interfaces)
-        testRuntimeOnly "org.objenesis:objenesis:2.6"                     // Allow Spock to mock classes with constructor arguments
+        testRuntimeOnly "net.bytebuddy:byte-buddy:1.11.20"                 // allows Spock to mock classes (in addition to interfaces)
+        testRuntimeOnly "org.objenesis:objenesis:3.2"                     // Allow Spock to mock classes with constructor arguments
         testRuntimeOnly  "org.slf4j:slf4j-jdk14:${slf4jVersion}"          // Runtime implementation of slf4j
     }
 

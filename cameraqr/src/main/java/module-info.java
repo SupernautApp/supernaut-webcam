@@ -23,10 +23,11 @@ module app.supernaut.fx.webcam.cameraqr {
     requires com.google.zxing;
     requires com.google.zxing.javase;
 
-    requires webcam.capture;
     requires org.slf4j;
 
     requires app.supernaut.fx.webcam.camera;
+    requires app.supernaut.camera.fx;
+    //requires app.supernaut.camera.sarxos;
 
     exports app.supernaut.fx.webcam.cameraqr;
 }
