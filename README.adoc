@@ -9,6 +9,8 @@ v0.2.0
 :caution-caption: :fire:
 :warning-caption: :warning:
 
+image:https://github.com/SupernautApp/supernaut-webcam/workflows/Gradle%20Build/badge.svg["Build Status", link="https://github.com/SupernautApp/supernaut-webcam/actions"]
+
 Libraries for Webcam and Webcam-based QR code capture for JavaFX. They **do not require** use of the Supernaut.FX dependency-injection micro-framework.
 
 Note:: This is a work-in-process.
